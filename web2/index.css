@@ -1,0 +1,305 @@
+/*css reset */
+body, h1, h2 ,h3 ,h4 ,h5 ,h6 ,hr ,p ,blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input,textarea, th, td{
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea, th {
+    color: #8B8B8B;
+    background-color: #FFF;
+    font-size: 12px;
+    line-height: 1.5em;
+    font-family: Arial;
+}
+
+button{
+    cursor: pointer;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-size: 100%;
+
+}
+
+a{
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #333;
+}
+
+li{
+    list-style: none;
+}
+
+img{
+    border: 0 none;
+}
+
+input{
+    cursor: pointer;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+
+/*wrap */
+.wrap {
+    width: 960px;
+    margin: 0 auto;
+}
+
+
+
+/*nav*/
+#Ahead {
+    height: 113px;
+    border-bottom: 1px solid #DDD;
+    min-width: 960px;
+}
+.Ahead {
+    height: 112px;
+    position: relative;
+}
+.wrap {
+    width: 960px;
+    margin: 0 auto;
+}
+.AheadLogo {
+    width: 295px;
+    height: 113px;
+    background: #fff url(img/frame_logo.png) no-repeat;
+    position: absolute;
+    top: 0;
+    left: -114px;
+    margin: 0;
+}
+
+.AheadInfo{
+    color: #CDCDCD;
+    position: absolute;
+    top: 9px;
+    right: -8px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.AheadInfo a{
+    margin: 0 8px;
+
+}
+
+
+.AheadSearch, .navigation li a, .visitor_cp button {
+    background: url(img/frame_bg.png) no-repeat;
+}
+
+.AheadSearch{
+     background-position: 0 -161px;
+     width: 228px;
+     height: 39px;
+     position: absolute;
+     top: 38px;
+     right: -4px;
+     z-index: 2;
+ }
+
+.AheadSearchFocuse{
+    background-position: -233px -161px;
+}
+
+.searchText {
+    color: #C3C3C3;
+    line-height: 20px;
+    width: 180px;
+    height: 20px;
+    margin: 10px 0 10px 15px;
+    border: 0;
+    outline: none;
+}
+.goSearch{
+    width: 28px;
+    height: 30px;
+    border: 0 none;
+    opacity:0;
+    vertical-align: top;
+    cursor: pointer;
+    background: none;
+}
+
+.navigation{
+    width: 480px;
+    height: 75px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 238px;
+}
+
+.navigation ul{
+    width: 550px;
+}
+
+.navigation li{
+    height: 75px;
+    margin-right: 8px;
+    float: left;
+    position: relative;
+}
+
+.navigation li a {
+    height: 75px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation li.navHome{
+    width: 88px;
+}
+.navigation li.navMv{
+    width: 58px;
+}
+.navigation li.navMymusic{
+    width: 89px;
+}
+.navigation li.navSoftware{
+    width: 58px;
+}
+.navigation li.navMusicvip{
+    width: 58px;
+}
+.navigation li.navQplay{
+    width: 71px;
+}
+.navigation .navHome a.nonce {
+    background-position: 0 0;
+}
+
+.navigation .navMv a.nonce {
+    background-position: -101px 0;
+}
+
+.navigation .navMymusic a.nonce {
+    background-position: -166px 0;
+}
+
+.navigation .navSoftware a.nonce {
+    background-position: -267px 0;
+}
+
+.navigation .navMusicvip a.nonce {
+    background-position: -379px 0;
+}
+
+.navigation .navQplay a.nonce {
+    background-position: -445px 0;
+}
+
+.navigation .navHome a {
+    background-position: 0 -79px;
+}
+
+.navigation .navMv a {
+    background-position: -101px -79px;
+}
+
+.navigation .navMymusic a {
+    background-position: -166px -79px;
+}
+
+.navigation .navSoftware a {
+    background-position: -267px -79px;
+}
+
+.navigation .navMusicvip a {
+    background-position: -379px -79px;
+}
+
+.navigation .navQplay a {
+    background-position: -445px -79px;
+}
+.navigation li span{
+    height: 6px;
+    font-size: 0;
+    text-indent: -999em;
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navigation li .nonce0 {
+    display: none;
+}
+
+.subNavigation {
+    color: #C5C5C5;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    z-index: 1;
+}
+
+.subNavigation p {
+    display: none;
+}
+
+.subNavigation p a {
+    color: #6E6E6E;
+    font-size: 14px;
+    padding: 0 15px;
+}
+
+.subNavigation p a.nonce {
+    color: #0dad51;
+    font-weight: bold;
+}
+
+.subNavigation .subLib {
+    margin-left: 244px;
+}
+
+.subNavigation .subMv {
+    margin-left: 336px;
+}
+
+.subNavigation .subMymusic {
+    margin-left: 285px;
+}
+
+.subNavigation .subQplay {
+    margin-left: 526px;
+}
+
+.subNavigation .subSoftware {
+    margin-left: 464px;
+}
+
+
+
+/*focus*/
+
+.Acontent{
+    padding: 20px 0;
+    overflow: hidden;
+}
+.Acontent .AcontLeft{
+    width: 700px;
+    margin-right: 40px;
+    float: left;
+}
+.AfocusShow{
+    width: 700px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 40px;
+}

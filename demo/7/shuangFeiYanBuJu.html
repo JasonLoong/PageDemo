@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双飞燕布局</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .float_l {
+            float: left; }
+        .height {
+            padding-bottom: 9999px;
+            margin-bottom: -9999px;
+        }
+        #header {
+            height: 200px;
+            background: #46be00;
+        }
+        #main {
+            height: 900px;
+            overflow: hidden;
+        }
+        #article {
+            width: 100%;
+            background: #ffe32f;
+
+        }
+        #box { margin: 0 300px;
+        }
+        #article_l {
+            width: 300px;
+            background: #45361f;
+            margin-left: -100%;
+        }
+        #article_r {
+            width: 300px;
+            background: #420cff;
+            margin-left: -300px;
+        }
+        #footer {
+            height: 100px;
+            background: #46be00;
+        }
+    </style>
+</head>
+<body>
+<div id="header">header</div>
+<div id="main">
+    <div id="article" class="float_l height">
+        <div id="box">mid</div>
+    </div>
+    <div id="article_l" class="float_l height">left</div>
+    <div id="article_r" class="float_l height">right</div>
+</div>
+<div id="footer">footer</div>
+
+</body>
+</html>

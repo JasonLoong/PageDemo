@@ -1,0 +1,84 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="utf-8">
+<title>图片自动切换查看</title>
+<style>
+body,h4{ margin:30px; background-color:#09C;}
+#content{width:100%; margin: 0 auto;}
+.box{ width:384px; height:216px; position:relative; background:url(loader_ico.gif) no-repeat center; border:none; float:left; margin-right: 50px;}
+.box img{ border:none; width:384px; height:216px; }
+.box ul{ padding:0; margin:0; position:absolute; top:0; right:-40px;}
+.box li{ list-style:none; width:30px; height:30px; background:#06F; margin-bottom:10px;}
+.box .active{ background:#0FF;}
+.box span{ width:384px; height:30px; line-height:30px; text-align:center; position:absolute; top:0; left:0; font-size:24px; color:#000;}
+</style>
+<script>
+window.onload = function() {
+		fn('pic1',['a.jpg', 'b.jpg', 'c.jpg', 'd.jpg', 'e.jpg'],'onclick');
+		fn('pic2',['b.jpg', 'c.jpg', 'd.jpg', 'e.jpg'],'onmouseover');
+
+}
+function fn(id,arrUrl,evt){
+		var oDiv = document.getElementById(id);
+		var oImg = oDiv.getElementsByTagName('img')[0];
+		var oSpan = oDiv.getElementsByTagName('span')[0];
+		var oUl = oDiv.getElementsByTagName('ul')[0];
+		var aLi = oDiv.getElementsByTagName('li');
+		var num = 0;
+		var timer = null;
+		function autorun(){
+				timer = setInterval(function(){
+				num++;
+				num %= arrUrl.length;
+				fnTab();
+			},1000)
+		}
+		autorun();
+		oDiv.onmousemove = function(){clearInterval(timer);}
+		oDiv.onmouseout = autorun;
+		for (var i = 0; i < arrUrl.length; i++) {
+			oUl.innerHTML += '<li></li>';
+		}
+		function fnTab() {
+			oImg.src = arrUrl[num];
+			oSpan.innerHTML = 1 + num + '/' + arrUrl.length;
+			for (var i = 0; i < arrUrl.length; i++) {
+				aLi[i].className = '';
+			}
+			aLi[num].className = 'active';
+		}
+		fnTab();//初始化
+		for (var i = 0; i < arrUrl.length; i++) {
+			aLi[i].index = i;
+			aLi[i][evt] = function () {
+				num = this.index;
+				fnTab();
+			}
+		}
+	}
+
+</script>
+</head>
+
+<body>
+<div id="content">
+<div id="pic1" class="box">
+	<img src=""/>
+    <ul>
+    </ul>
+    <span>图片正在加载中</span>
+</div>
+<div id="pic2" class="box">
+	<img src=""/>
+    <ul>
+    </ul>
+    <span>图片正在加载中</span>
+</div>
+	<p><h4>载入后图片列表自动循环播放，</br>
+	鼠标指针移到图片上时停在当前图片上；</br>
+	移到右侧小方块上可以切换图片，</br>
+	其中，左侧为点击切换，右侧为滑动切换。</h4></p>
+</div>
+</body>
+</html>

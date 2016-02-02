@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        body{ background-color:#09C;}
+        #img{ position:relative; width:355px; height:200px;}
+        #img .small{ position:relative; width:355px; height:200px; float:left;}
+        #img .mark{ position:absolute; width:100%; height:100%; z-index:2; top:0; left:0; background:red; filter:alpha(opacity:0); opacity:0;}
+        #img .float{ position:absolute; width:142px; height:80px; border:1px solid #222222; background:#ffffff; opacity:0.5; top:0; left:0; display:none;}
+        #img .big{ width:710px; height:400px; position:absolute; top:0; left:370px; display:none; overflow:hidden;}
+        #img .big img{position:absolute;}
+    </style>
+    <script>
+        function getByClass(oParent, sClass)
+        {   var aEle=oParent.getElementsByTagName('*');
+            var aTmp=[];
+            for(var i=0;i<aEle.length;i++)
+            {
+                if(aEle[i].className==sClass)
+                {
+                    aTmp.push(aEle[i]);
+                }
+            }
+            return aTmp;
+        }
+        window.onload = function(){
+            var oImg = document.getElementById('img');
+            var oMark = getByClass(oImg,'mark')[0];
+            var oFloat = getByClass(oImg,'float')[0];
+            var oBig = getByClass(oImg,'big')[0];
+            var oSmall = getByClass(oImg,'small')[0];
+            var oBimg = oBig.getElementsByTagName('img')[0];
+            oMark.onmouseover = function(){
+                oFloat.style.display = 'block';
+                oBig.style.display = 'block';
+            };
+            oMark.onmouseout = function(){
+                oFloat.style.display = 'none';
+                oBig.style.display = 'none';
+            };
+
+            oMark.onmousemove = function(ev){
+                var oEvent = ev||event;
+                var l = oEvent.clientX-oImg.offsetLeft-oSmall.offsetLeft-oFloat.offsetWidth/2;
+                var t = oEvent.clientY-oImg.offsetTop-oSmall.offsetTop-oFloat.offsetHeight/2;
+
+                if(l<0){
+                    l=0;
+                }
+                else if(l>oImg.offsetWidth-oFloat.offsetWidth) {
+                    l=oImg.offsetWidth-oFloat.offsetWidth;
+                }
+                if(t<0){
+                    t=0;
+                }else if(t>oImg.offsetHeight-oFloat.offsetHeight){
+                    t=oImg.offsetHeight-oFloat.offsetHeight;
+                }
+                oFloat.style.left = l+'px';
+                oFloat.style.top = t+'px';
+                var percentX = l/(oImg.offsetWidth-oFloat.offsetWidth);
+                var percentY = t/(oImg.offsetHeight-oFloat.offsetHeight);
+                oBimg.style.left = -percentX*(oBimg.offsetWidth-oBig.offsetWidth)+'px';
+                oBimg.style.top = -percentY*(oBimg.offsetHeight-oBig.offsetHeight)+'px';
+            };
+        }
+    </script>
+</head>
+<body>
+<div id="img">
+    <div class="small">
+        <span class="mark"></span>
+        <span class="float"></span>
+        <img src="img/a.jpg" alt="small">
+    </div>
+    <div class="big">
+        <img src="img/b.jpg" alt="big">
+    </div>
+</div>
+</body>
+</html>

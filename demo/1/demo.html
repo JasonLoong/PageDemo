@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3响应式多级菜单</title>
+<style>
+body,ul,h3{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style:none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+body{
+    background: #061345;}
+#header{
+    /*width: 960px;*/
+    margin: 0 auto;
+    z-index: 2;}
+#main{
+    /*width: 960px;*/
+    height: 1000px;
+    margin: 0 auto;
+    background: #126bff;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 4px;}
+.list{
+    float: left;
+}
+.clear{
+    zoom: 1;
+}
+.clear:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#lis{
+    /*width:960px;*/
+    margin:0 auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+.list{
+    flex: 1 1 100%;
+}
+#lis h3{
+    cursor: pointer;
+    height:30px;
+    background:url(img/ico1.gif) no-repeat 10px center #FF9;
+    line-height:30px;
+    text-indent:30px;
+    border: 1px solid #ffc200;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#lis .active{
+    height:30px;
+    background:url(img/ico2.gif) no-repeat 10px center #FFFF33;
+    line-height:30px;
+    text-indent:30px;
+}
+#lis ul{
+    display:none;
+}
+#lis ul li{
+    background:#FFC;
+    line-height:24px;
+    text-indent:30px;
+    border:1px solid #ff6f13;
+}
+#lis ul .hover{
+    background: #609cff;
+}
+
+@media (min-width: 480px) {
+        .list{
+            flex: 1 1 50%;}
+}
+@media (min-width: 768px) {
+        #lis{
+            flex-flow: row nowrap;}
+}
+</style>
+
+<script>
+window.onload = function(){
+	var oUl = document.getElementById('lis');
+	var aH3 = oUl.getElementsByTagName('h3');
+	var aUl = oUl.getElementsByTagName('ul');
+	var aLi = null;
+	var arrLi = [];
+    var aLink=document.getElementsByTagName('a');
+
+    for(var i=0;i<aLink.length;i++)
+    {
+        aLink[i].target='_blank';
+    }
+
+	for( var i=0; i<aH3.length; i++){
+		aH3[i].index = i;
+		aH3[i].onclick = function(){
+			if(this.className == ''){
+			for(var i=0; i<aUl.length; i++)
+			{	aUl[i].style.display = 'none';
+				aH3[i].className = '';
+			}
+			
+			aUl[this.index].style.display = 'block';
+			
+			this.className = 'active';
+			} else{
+			aUl[this.index].style.display = 'none';
+			this.className = '';
+			}
+			}
+		
+		}
+	
+	for(var i=0; i<aUl.length; i++){
+		var aLi = aUl[i].getElementsByTagName('li');
+		for(var j=0; j<aLi.length; j++){
+			arrLi.push(aLi[j]);
+		}
+	}
+	
+	for( var i=0;i<arrLi.length; i++){
+		arrLi[i].onclick = function(){
+			if(this.className == ''){
+				for(var i=0; i<arrLi.length; i++){ arrLi[i].className = ''; }
+				this.className = 'hover'; }
+			else{ this.className = '';}
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="header" class="clear">
+<ul id="lis" class="clear">
+	<li class="list">
+    	<h3>HTML</h3>
+            <ul>
+                <li><a href="#">第一层</a></li>
+                <li><a href="#">第一层</a></li>
+                <li><a href="#">第一层</a></li>
+                <li><a href="#">第一层</a></li>
+            </ul>
+    </li>
+	<li class="list">
+    	<h3>CSS</h3>
+            <ul>
+                <li><a href="#">第二层</a></li>
+                <li><a href="#">第二层</a></li>
+                <li><a href="#">第二层</a></li>
+            </ul>
+    </li>
+	<li class="list">
+    	<h3>JavaScript</h3>
+            <ul>
+                <li><a href="#">第三层</a></li>
+                <li><a href="#">第三层</a></li>
+            </ul>
+    </li>
+    <li class="list">
+        <h3>JQuery</h3>
+            <ul>
+                <li><a href="#">第四层</a></li>
+                <li><a href="#">第四层</a></li>
+                <li><a href="#">第四层</a></li>
+                <li><a href="#">第四层</a></li>
+                <li><a href="#">第四层</a></li>
+            </ul>
+    </li>
+    <li class="list">
+        <h3>AngularJS</h3>
+            <ul>
+                <li><a href="#">第五层</a></li>
+                <li><a href="#">第五层</a></li>
+                <li><a href="#">第五层</a></li>
+            </ul>
+    </li>
+    <li class="list">
+        <h3>React.js</h3>
+            <ul>
+                <li><a href="#">第六层</a></li>
+                <li><a href="#">第六层</a></li>
+                <li><a href="#">第六层</a></li>
+            </ul>
+    </li>
+    <li class="list">
+        <h3>Less</h3>
+            <ul>
+                <li><a href="#">第七层</a></li>
+                <li><a href="#">第七层</a></li>
+                <li><a href="#">第七层</a></li>
+            </ul>
+    </li>
+</ul>
+</div>
+<div id="main">
+    <p style="text-align: center; font-size: 20px">新窗口打开菜单链接，原链接位置保留标记</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            var oUl1 = document.getElementById('ul1');
+            var aLi = getElementByClassName(oUl1,'li','li1');
+            function getElementByClassName (oParent,tagName,className){
+                var aEls = oParent.getElementsByTagName(tagName);
+                var arr = [];
+                for(var i=0;i<aEls.length;i++){
+                    var aClassName  = aEls[i].className.split(' ');
+                    for(var j=0;j<aClassName.length;j++){
+                        if(aClassName[j] == className){
+                            arr.push(aEls[i]);
+                            break;
+                        }
+                    }
+//                    if(aEls[i].className==className){
+//                        arr.push(aEls[i]);
+//                    }
+                }
+                return arr;
+            }
+            console.log(aLi);
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].style.background = 'red';
+            }
+
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1">
+    <li class="li1 li1">1</li>
+    <li class="li1">2</li>
+    <li class="li2">3</li>
+    <li>4</li>
+</ul>
+<div id="div1">
+    <ul id="ul2">
+        <li class="li1">5</li>
+        <li class="li1 li2">6</li>
+    </ul>
+</div>
+</body>
+</html>
